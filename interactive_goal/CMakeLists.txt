@@ -42,7 +42,6 @@ target_link_libraries(interactive_posestamped_node
   ${catkin_LIBRARIES}
 )
 
-)
 
 
 
