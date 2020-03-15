@@ -24,12 +24,12 @@ def set_cmd(state):
     :return:
     """
     if state is False:
-        ser.write("0" + '\r\n')
+        ser.write("1\r\n")
     if state is True:
-        ser.write("1" + '\r\n')
+        ser.write("0\r\n")
 
 def command_clb(data):
-    print ("Set gripper state:" + data.data)
+    print ("Set gripper state:" + str(data.data))
     set_cmd(data.data)
 
 
@@ -47,9 +47,9 @@ if __name__ == '__main__':
     ser = serial.Serial(port, 9600)
     if ser.is_open == False:
         ser.open()
-    else:
-        print ("ERROR: serial is close!")
-        exit()
+    #else:
+    #    print ("ERROR: serial is close!")
+    #    exit()
     # # get data in external thread
     # thread = threading.Thread(target=getLidarData)
     # thread.daemon = True
