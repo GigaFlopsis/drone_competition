@@ -20,7 +20,8 @@ int maxVal = 145;
 void setup() {
   myservo.attach(9);  // attaches the servo on pin 9 to the servo object
   myservo.write(90);              // tell servo to go to position in variable 'pos'
- 
+   Serial.begin(9600);
+
  while (!Serial) {
     ; // wait for serial port to connect. Needed for native USB port only
   }
