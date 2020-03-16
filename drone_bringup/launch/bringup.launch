@@ -18,10 +18,31 @@
 		<arg name="fcu_port" default="$(env MAVROS_FCU_PORT)" />
 	</include>
     
-	<!-- run Safemode server -->
+	<!-- goal to reg -->
 	<node pkg="drone_bringup" name="drone_reg" type="goal_to_reg.py" respawn="true" output="screen"/>
-    
-  <node pkg="interactive_goal" name="interactive_posestamped_node" type="interactive_posestamped_node" respawn="true"/>
+	<!-- interactive goal -->    
+	<node pkg="interactive_goal" name="interactive_posestamped_node" type="interactive_posestamped_node" respawn="true"/>
+	
+	<!-- Gripper run -->
+	<node pkg="gripper_ros" name="gripper_ros_node" type="arduino_gripper_ros.py" respawn="true" output="screen">
+		<param name="port" value="$(env GRIPPER_PORT)"/>
+	</node>
 
+	<!-- Run camera -->
+	  <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+	    <param name="video_device" value="/dev/video0" />
+	    <param name="image_width" value="640" />
+	    <param name="image_height" value="480" />
+	    <param name="pixel_format" value="yuyv" />
+	    <param name="camera_frame_id" value="usb_cam" />
+	    <param name="io_method" value="mmap"/>
+	  </node>
+
+<!--	  
+	<node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
+	    <remap from="image" to="/usb_cam/image_raw"/>
+	    <param name="autosize" value="true" />
+	  </node>
+-->
 
 </launch>
