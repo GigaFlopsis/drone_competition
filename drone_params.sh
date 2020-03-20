@@ -14,3 +14,5 @@ export MAVROS_FCU_URL='/dev/ttyS5:921600'
 export MAVROS_FCU_PORT=14556
 
 export MOCAP_IP=192.168.1.73
+export GRIPPER_PORT="/dev/ttyACM0"
+
