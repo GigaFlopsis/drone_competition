@@ -14,8 +14,8 @@ Servo myservo;  // create servo object to control a servo
 
 String inString = "";    // string to hold input
 
-int minVal = 50;
-int maxVal = 145;
+int minVal = 0;
+int maxVal = 180;
 
 void setup() {
   myservo.attach(9);  // attaches the servo on pin 9 to the servo object
@@ -41,11 +41,11 @@ void loop() {
     // if you get a newline, print the string, then the string's value:
     if (inChar == '\n') {
       int value = inString.toInt();
-      if (value == 1)
+      if (value == 0)
       {
       myservo.write(maxVal);              // tell servo to go to position in variable 'pos'  
       }
-      if (value == 0)
+      if (value == 1)
       {
       myservo.write(minVal);              // tell servo to go to position in variable 'pos'  
       }

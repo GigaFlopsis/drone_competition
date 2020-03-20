@@ -15,7 +15,6 @@ import math
 import rospy
 from mavros_msgs.msg import State, ExtendedState
 from mavros_msgs.srv import SetMode, CommandBool
-from drone_msgs.msg import Diagnostics
 import tf.transformations as t
 from sensor_msgs.msg import Imu
 from std_msgs.msg import String
@@ -33,17 +32,6 @@ drone_status = {'armed': False, 'mode': None, 'landed': False}
 
 # init delay
 receive_delay = 1.0
-
-diagnostics_data = Diagnostics()
-
-def diagnostics_cb(data):
-    """
-    Note use.
-    Callback diagnostics node
-    :type data: Diagnostics
-    """
-    global diagnostics_data
-    diagnostics_data = data
 
 def state_cb(data):
     """
@@ -154,7 +142,6 @@ if __name__ == '__main__':
         rospy.Subscriber(mavros_root + "/state", State, state_cb)
         rospy.Subscriber(mavros_root + "/extended_state", ExtendedState, extended_state_cb)
         rospy.Subscriber(mavros_root + "/imu/data", Imu, imu_cb)
-        rospy.Subscriber("drone/diagnostics", Diagnostics, diagnostics_cb)
         rospy.Subscriber("drone/receive", String, receive_clb)
 
         rate = rospy.Rate(10)  # set rate 20 Hz

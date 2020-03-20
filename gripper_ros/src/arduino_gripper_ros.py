@@ -24,9 +24,9 @@ def set_cmd(state):
     :return:
     """
     if state is False:
-        ser.write("1\r\n")
-    if state is True:
         ser.write("0\r\n")
+    if state is True:
+        ser.write("1\r\n")
 
 def command_clb(data):
     print ("Set gripper state:" + str(data.data))

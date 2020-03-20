@@ -202,7 +202,7 @@ px4flow:
 # vision_pose_estimate
 vision_pose:
   tf:
-    listen: false           # enable tf listener (disable topic subscribers)
+    listen: true           # enable tf listener (disable topic subscribers)
     frame_id: "map"
     child_frame_id: "drone"
     rate_limit: 100.0

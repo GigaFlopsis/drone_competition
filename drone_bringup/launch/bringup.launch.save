@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="server" default="$(env MOCAP_IP)"/>
+  <arg name="server" default="env MOCAP_IP"/>
+
     <!-- laod tf -->
 	<include file="$(find drone_bringup)/launch/fixed_joints.launch"/>
 
@@ -25,16 +26,14 @@
     
   <node pkg="interactive_goal" name="interactive_posestamped_node" type="interactive_posestamped_node" respawn="true"/>
 
-    	<node pkg="gripper_ros" name="gripper_ros" type="arduino_gripper_ros.py" respawn="true" output="screen"/>
+  	<node pkg="gripper_ros" name="gripper_ros" type="arduino_gripper_ros.py" respawn="true" output="screen"/>
 
-  <node pkg="vrpn_client_ros" type="vrpn_client_node" name="vrpn_client_node" output="screen" respawn="true">
+  <node pkg="vrpn_client_ros" type="vrpn_client_node" name="vrpn_client_node" output="screen">
     <rosparam subst_value="true">
       server: $(arg server)
       port: 3883
-
       update_frequency: 100.0
       frame_id: map
-
       # Use the VRPN server's time, or the client's ROS time.
       use_server_time: false
       broadcast_tf: true
