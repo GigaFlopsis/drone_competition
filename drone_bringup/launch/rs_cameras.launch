@@ -1,8 +1,0 @@
-<launch>
-
-<!--Run realsense d435-->
-	<include file="$(find drone_bringup)/launch/rs_d435.launch"/>
-
-	<!--Run realsense t265-->
-	<include file="$(find drone_bringup)/launch/rs_t265.launch"/>
-</launch>

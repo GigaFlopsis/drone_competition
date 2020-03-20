@@ -81,7 +81,7 @@ class drone_client():
         """
         open/close gripper
 
-        :param state: true - is open, false - is close
+        :param state: true - is close, false - is open
         :return:
         """
         self.gripper_pub.publish(state)
