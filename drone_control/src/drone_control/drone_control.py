@@ -72,9 +72,9 @@ class drone_client():
 
         quat = tf.transformations.quaternion_from_euler(0.,0.,yaw)
         goal_msgs.pose.orientation.x = quat[0]
-        goal_msgs.pose.orientation.x = quat[1]
-        goal_msgs.pose.orientation.x = quat[2]
-        goal_msgs.pose.orientation.x = quat[3]
+        goal_msgs.pose.orientation.y = quat[1]
+        goal_msgs.pose.orientation.z = quat[2]
+        goal_msgs.pose.orientation.w = quat[3]
         self.goal_pub.publish(goal_msgs)
 
     def SetGripper(self, state):
