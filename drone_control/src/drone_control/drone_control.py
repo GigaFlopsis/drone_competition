@@ -30,7 +30,7 @@ class drone_client():
 
         self.bridge = CvBridge()
         rospy.Subscriber("/mavros/local_position/pose", PoseStamped, self.current_nav_clb)
-        self.image_sub = rospy.Subscriber("/usb_cam/image_raw", Image, self.image_clb)
+        self.image_sub = rospy.Subscriber("/d400/color/image_raw", Image, self.image_clb)
         self.goal_pub = rospy.Publisher("/goal", PoseStamped,queue_size=10)
         self.gripper_pub = rospy.Publisher("gripper", Bool, queue_size=10)
 

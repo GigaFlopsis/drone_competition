@@ -24,7 +24,7 @@
 	<node pkg="drone_bringup" name="drone_reg" type="goal_to_reg.py" respawn="true" output="screen"/>
 	<!-- interactive goal -->    
 	<node pkg="interactive_goal" name="interactive_posestamped_node" type="interactive_posestamped_node" respawn="true"/>
-	
+
 	<!-- Gripper run -->
 	<node pkg="gripper_ros" name="gripper_ros_node" type="arduino_gripper_ros.py" respawn="true" output="screen">
 		<param name="port" value="$(env GRIPPER_PORT)"/>
